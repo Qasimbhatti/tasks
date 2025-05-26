@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Coming Soon</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #1f1c2c, #928dab);
+      color: #fff;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      flex-direction: column;
+    }
+
+    h1 {
+      font-size: 3em;
+      margin: 0.2em 0;
+    }
+
+    p {
+      font-size: 1.2em;
+      margin: 0.2em 0 1em;
+    }
+
+    .timer {
+      font-size: 2em;
+      font-weight: bold;
+    }
+
+    .email-box {
+      margin-top: 1.5em;
+    }
+
+    input[type="email"] {
+      padding: 10px;
+      border: none;
+      border-radius: 4px;
+      width: 250px;
+    }
+
+    button {
+      padding: 10px 16px;
+      margin-left: 8px;
+      background-color: #ff6f61;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #e05548;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Coming Soon</h1>
+  <p>Our website is under construction. We'll be here soon with a new experience.</p>
+
+  <div class="timer" id="countdown">Launching in 10 days</div>
+
+  <div class="email-box">
+    <input type="email" placeholder="Enter your email" />
+    <button>Notify Me</button>
+  </div>
+
+  <script>
+    // Countdown (optional - days left from today)
+    const countdown = document.getElementById("countdown");
+    const launchDate = new Date();
+    launchDate.setDate(launchDate.getDate() + 10);
+
+    setInterval(() => {
+      const now = new Date().getTime();
+      const distance = launchDate - now;
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      countdown.innerHTML = `Launching in ${days}d ${hours}h ${minutes}m ${seconds}s`;
+
+      if (distance < 0) {
+        countdown.innerHTML = "We’re live!";
+      }
+    }, 1000);
+  </script>
+
+</body>
+</html>
